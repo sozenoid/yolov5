@@ -132,7 +132,8 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
     val_path = data_dict['val']
 
     # Freeze
-    freeze = ['model.%s.' % x for x in range(10)]  # parameter names to freeze (full or partial) here freeze 10 
+    # freeze = ['model.%s.' % x for x in range(10)]  # parameter names to freeze (full or partial) here freeze 10
+    freeze = []
     for k, v in model.named_parameters():
         v.requires_grad = True  # train all layers
         if any(x in k for x in freeze):
